@@ -22,7 +22,7 @@ Save this Python script as chatgpt_cmd.py:
 
 import openai
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.getenv("OPENAI_API_KEY") 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
 
 while True:
     prompt = input("You: ")
