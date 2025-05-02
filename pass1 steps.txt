@@ -1,0 +1,83 @@
+💻 SPOS Practical – Pass 1 of Two-Pass Assembler (in Java)
+📁 Files Required
+input.asm – your assembly code
+
+optab.txt – your opcode table
+
+Java file – Pass1.java
+
+🔹 1. Create input.asm
+txt
+Copy
+Edit
+START 100
+** MOVER AREG,='5'
+** ADD BREG,ONE
+ONE DS 1
+END
+🔹 2. Create optab.txt
+txt
+Copy
+Edit
+MOVER 04
+ADD 01
+DS 00
+🔹 3. Java Code: Pass1.java
+java
+Copy
+Edit
+import java.io.*;
+import java.util.*;
+
+class Pass1 {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new FileReader("input.asm"));
+        BufferedWriter symtab = new BufferedWriter(new FileWriter("symtab.txt"));
+        BufferedWriter intermediate = new BufferedWriter(new FileWriter("intermediate.txt"));
+
+        String line = br.readLine();
+        String[] parts = line.split(" ");
+        int locctr = Integer.parseInt(parts[1]);
+
+        intermediate.write(line + "\n");
+
+        while ((line = br.readLine()) != null) {
+            parts = line.split(" ");
+            String label = parts[0];
+            String opcode = parts[1];
+
+            if (!label.equals("**")) {
+                symtab.write(label + "\t" + locctr + "\n");
+            }
+
+            intermediate.write(locctr + "\t" + line + "\n");
+            locctr += 1;
+        }
+
+        br.close();
+        symtab.close();
+        intermediate.close();
+
+        System.out.println("Pass 1 completed. Check symtab.txt and intermediate.txt.");
+    }
+}
+🔹 4. How to Run
+Open terminal or command prompt in the directory where files are saved:
+
+bash
+Copy
+Edit
+javac Pass1.java
+java Pass1
+📤 Output Files
+symtab.txt: Symbol Table (Labels with addresses)
+
+intermediate.txt: Intermediate Code with LC (location counter)
+
+✅ Summary
+File	Purpose
+input.asm	Source assembly program
+optab.txt	Contains opcodes and their codes
+Pass1.java	Java program for Pass 1 Assembler
+symtab.txt	Output: symbol table
+intermediate.txt	Output: intermediate code
