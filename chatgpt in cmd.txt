@@ -1,0 +1,56 @@
+✅ Step-by-Step: Use ChatGPT via OpenAI API in Terminal (CMD)
+✅ Prerequisites:
+A working OpenAI API key – get it from https://platform.openai.com/account/api-keys
+
+Python 3 installed
+
+Internet connection
+
+🔧 Step 1: Install OpenAI Python Package
+
+pip install openai
+🔧 Step 2: Export Your OpenAI API Key
+Replace your-api-key-here with your real key:
+
+
+export OPENAI_API_KEY="your-api-key-here"
+To make it permanent, add that line to your ~/.bashrc and run source ~/.bashrc.
+
+💬 Step 3: Simple ChatGPT Terminal Script
+Save this Python script as chatgpt_cmd.py:
+
+
+import openai
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+while True:
+    prompt = input("You: ")
+    if prompt.lower() in ["exit", "quit"]:
+        break
+
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt}]
+    )
+
+    reply = response["choices"][0]["message"]["content"]
+    print("ChatGPT:", reply)
+▶️ Step 4: Run the Script
+
+python3 chatgpt_cmd.py
+Type prompts, hit Enter, and get ChatGPT responses directly in your terminal.
+
+✅ Optional: Use GPT-4
+If your API key supports GPT-4, just change:
+
+python
+Copy
+Edit
+model="gpt-3.5-turbo"
+to:
+
+python
+Copy
+Edit
+model="gpt-4"
