@@ -1,0 +1,112 @@
+1. CPU Scheduling Algorithms
+Definition:
+CPU scheduling is the process of selecting a process from the ready queue and assigning it to the CPU for execution.
+
+Why needed?
+When multiple processes are in the ready queue, the OS must decide the best way to execute them to improve CPU utilization and response time.
+
+Types:
+
+FCFS (First-Come-First-Served):
+
+Non-preemptive.
+
+Simple, processes served in arrival order.
+
+SJF (Shortest Job First):
+
+Non-preemptive or preemptive.
+
+Picks process with the shortest burst time.
+
+Priority Scheduling:
+
+Based on priority numbers (lower = higher priority).
+
+Round Robin:
+
+Preemptive. Each process gets fixed time slice (quantum) in cyclic order.
+
+Common Terms:
+
+Burst Time: Time taken by process on CPU.
+
+Arrival Time: When process arrives in ready queue.
+
+Completion Time: When process finishes.
+
+Waiting Time (WT) = Start Time – Arrival Time
+
+Turnaround Time (TAT) = Completion Time – Arrival Time
+
+2. Page Replacement Algorithms (Memory Management)
+Definition:
+When there’s no free frame in memory and a new page must be loaded, the OS must replace one of the existing pages.
+
+Common Algorithms:
+
+FIFO (First In First Out):
+
+Oldest page is replaced first.
+
+Simple queue-based logic.
+
+LRU (Least Recently Used):
+
+Replaces the page not used for the longest time.
+
+Optimal:
+
+Replaces the page that won’t be used for the longest time in future.
+
+Terms:
+
+Page Fault: When a page is not found in memory.
+
+Hit: When a page is found in memory.
+
+Frame: Fixed-size block of physical memory.
+
+3. Assembler Pass 1 and Pass 2
+Objective:
+Convert assembly language to machine code.
+
+Pass 1:
+Scans the source program.
+
+Builds Symbol Table (SYMTAB) for labels.
+
+Calculates instruction location counter (LOCCTR).
+
+Pass 2:
+Uses the symbol table from Pass 1.
+
+Replaces symbols with actual addresses.
+
+Generates object code.
+
+Tables Used:
+
+SYMTAB – Stores labels with addresses.
+
+OPTAB – Stores opcodes with machine codes.
+
+LITTAB – Stores literals if used.
+
+4. Macro Processor
+What is a Macro?
+A macro is a set of instructions written once and used many times by calling the macro name.
+
+Two Passes:
+
+Pass 1: Builds Macro Name Table (MNT) and Macro Definition Table (MDT).
+
+Pass 2: Expands macro during actual assembly using MNT and MDT.
+
+✅ Viva Q&A Summary
+Question	Answer
+What is scheduling?	OS deciding which process gets CPU time.
+What is a page fault?	When requested page is not in memory.
+Difference between FCFS and RR?	FCFS is non-preemptive; RR is preemptive and cyclic.
+What are SYMTAB and OPTAB?	Symbol table and opcode table used in assembler.
+What is a macro?	A code block you can reuse by calling once.
